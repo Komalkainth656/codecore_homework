@@ -1,0 +1,25 @@
+<%-include('../partials/header')%>
+<%-include('../partials/navbar')%>
+<section class="p-3">
+  <% if (cohort) {%>
+  <form action="/cohorts/<%= cohort.id%>" method="POST" >
+    <div class="form-group" >
+      <label for="inputURL">Logo URL</label>
+      <input type="text" name="imgURL" class="form-control" id="exampleInputEmail1" value="<%= cohort.imgURL %>">
+    </div>
+    <div class="form-group">
+      <label for="inputCohortName">Cohort Name</label>
+      <input type="text" name="cohortName" class="form-control" id="inputCohortName" value="<%= cohort.cohortName %>">
+    </div>
+    <div class="form-group">
+      <label for="inputMembers">Members</label>
+      <textarea name="members" id="inputMembers" class="form-control" rows="8"><%= cohort.members.join(', ') %></textarea>
+    </div>
+    <input type="hidden" name="_method" value="PATCH">
+    <input type="submit" class="btn btn-link border-primary float-right text-primary" value="Submit">
+  </form>
+  <%} else { %>
+    <h2 class="h2">No Cohort Found</h2>
+  <% } %>
+</section>
+<%-include('../partials/footer')%>

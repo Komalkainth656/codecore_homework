@@ -1,0 +1,28 @@
+<%-include('../partials/header')%>
+<link rel="stylesheet" href="../css/cohorts.css">
+<%-include('../partials/navbar')%>
+  <section class= "cohorts-container p-3">
+  <% if (orderedCohorts) { %>
+    <% for (let cohort in orderedCohorts) {  %>
+        <div class="cohort-container-<%=cohort %> border">
+          <div class="cohort-header">
+          <img src= "<%= orderedCohorts[cohort].imgURL %>" alt="Cohort Image" class="cohort-prfl-img">
+          <h2 class = "cohort-heading h2"><%= cohort %> </h2>
+          </div>
+          <div class="cohort-body">
+            <p class="members">
+            <% for (let member of orderedCohorts[cohort]["members"]) { %>
+              <%= member + ", " %>
+              <% } %>
+            </p>
+          </div>
+          <div class="cohort-footer">
+            <button class="btn btn-primary "><a class="text-white"href="/cohorts/<%= orderedCohorts[cohort].id %>">Show Cohort</a></button>
+          </div>
+        </div>
+    <% } %>
+  <% } else { %>
+  <h1 class="h1">Sorry! No cohorts found 😟. <h1>
+  <% } %>
+  </section>
+<%-include('../partials/footer')%>

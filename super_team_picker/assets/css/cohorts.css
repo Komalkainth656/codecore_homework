@@ -1,0 +1,50 @@
+body {
+    min-height: 100vh;
+  }
+  .cohorts-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+  
+  }
+  div[class^="cohort-container"] {
+    display: flex;
+    flex-flow: column wrap;
+    margin: 20px 0px 20px 0px;
+    border-radius: 10px;
+    padding: 10px;
+    max-width: 30vw;
+  }
+  
+  .members {
+    width: 80vw;
+  }
+  .cohort-header {
+    display: flex;
+    flex-direction: row;
+    width: 20vw;
+    justify-content: flex-start;
+    align-items: center;
+    height: 15vh;
+  }
+  .cohort-body {
+    display: flex;
+    flex-direction: row;
+    height: 5vh;      
+    flex-shrink: 1;
+    max-width: 100%;
+  }
+  .cohort-footer {
+    display: flex;
+    flex-direction: row;
+    height: 5vh;
+    align-items: center;
+  }
+  .cohort-prfl-img {
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+  }
+  .cohort-heading {
+    padding-left: 20px;
+  }

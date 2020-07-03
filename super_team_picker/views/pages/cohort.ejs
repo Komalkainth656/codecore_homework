@@ -1,0 +1,69 @@
+<%-include('../partials/header')%>
+<link rel="stylesheet" href="../css/cohort.css">
+<%-include('../partials/navbar')%>
+<section class="outer-container p-3">
+
+  <% if (cohort) {%>
+  <div class="cohort-container border">
+    <div class="cohort-header">
+      <h2 class="cohort-heading h2"><%= cohort.cohortName %> </h2>
+    </div>
+    <div class="cohort-members">
+      <p class="members">
+        <% for (let member of cohort["members"]) { %>
+        <%= member + ", " %>
+        <% } %>
+      </p>
+      <div class="cohort-buttons">
+        <form action="/cohorts/<%= cohort.id%>" method="POST">
+          <input type="hidden" name="_method" value="DELETE">
+          <input type="submit" class="btn btn-link text-primary border-primary" value="Delete Cohort">
+        </form>
+        <button class="btn btn-link text-primary border-primary"><a href="/cohorts/<%= cohort.id %>/edit">Edit
+            Cohort</a></button>
+      </div>
+    </div>
+    <div class="cohort-form">
+      <h6 class="h6">Method</h6>
+      <form action="/cohorts/<%= cohort.id %>/teams" method="POST">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="option" id="exampleRadios1" value="teamCount">
+          <label class="form-check-label" for="exampleRadios1">
+            Team Count
+          </label>
+        </div>
+        <div class="form-check">
+          <!--Use same names to ensure that only one of the boxes can be checked -->
+          <input class="form-check-input" type="radio" name="option" id="exampleRadios2" value="numPerTeams">
+          <label class="form-check-label" for="exampleRadios2">
+            Number Per Teams
+          </label>
+        </div>
+        <div class="form-group">
+          <label for="inputQuantity">Quantity</label>
+          <input type="text" name="quantity" class="form-control" id="inputQuantity" placeholder="">
+        </div>
+        <input type="submit" class="btn btn-link border-primary text-primary assign-btn" value="Assign Teams">
+      </form>
+    </div>
+    <div class="cohort-teams">
+      <% if (request) {%>
+      <% for (let key in teams)  {%>
+      <div class="team-container py-2">
+        <h3 class="h3"><%= "Team - " + key %></h3>
+        <ul class="team-<%= key %>">
+          <% for (let member of teams[key]) { %>
+          <li class="team-member"><%= member %></li>
+          <% } %>
+        </ul>
+      </div>
+      <% } %>
+      <% } %>
+    </div>
+  </div>
+  <%} else {%>
+  <h1 class="h1">Cohort not found</h1>
+  <%} %>
+
+</section>
+<%-include('../partials/footer')%>

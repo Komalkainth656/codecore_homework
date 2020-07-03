@@ -1,0 +1,20 @@
+<%-include('../partials/header')%>
+<%-include('../partials/navbar')%>
+<section class="p-3">
+  <form method="POST" action="/cohorts/new">
+    <div class="form-group" >
+      <label for="inputURL">Logo URL</label>
+      <input type="text" name="imgURL" class="form-control" id="exampleInputEmail1" placeholder="e.g https://example.com/some.png">
+    </div>
+    <div class="form-group">
+      <label for="inputCohortName">Cohort Name</label>
+      <input type="text" name="cohortName" class="form-control" id="inputCohortName" placeholder="Enter Cohort Name">
+    </div>
+    <div class="form-group">
+      <label for="inputMembers">Members</label>
+      <textarea name="members" id="inputMembers" class="form-control" rows="8"></textarea>
+    </div>
+    <button type="submit" class="btn btn-link border-primary float-right text-primary">Submit</button>
+  </form>
+</section>
+<%-include('../partials/footer')%>
